@@ -74,13 +74,10 @@ var LocationMarker = function(data) {
     self.filterMarkers = ko.computed(function() {
 
 
-        // set marker and extend bounds (showListings)
         if (self.visible() === true) {
 
             self.marker.setMap(map);
-
-        
-       } else {
+        } else {
             self.marker.setMap(null);
         }
     });
