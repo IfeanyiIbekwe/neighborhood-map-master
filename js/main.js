@@ -1,7 +1,6 @@
 // Global variables
 var map;
 var infoWindow;
-var bounds;
 
 
 
@@ -26,7 +25,6 @@ function initMap() {
 
 
         infoWindow = new google.maps.InfoWindow();
-    bounds = new google.maps.LatLngBounds();
 
 
     ko.applyBindings(new ViewModel());
@@ -80,8 +78,9 @@ var LocationMarker = function(data) {
         if (self.visible() === true) {
 
             self.marker.setMap(map);
-            bounds.extend(self.marker.position);
-        } else {
+
+        
+       } else {
             self.marker.setMap(null);
         }
     });
