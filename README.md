@@ -14,11 +14,14 @@ I have built a map for the Victoria Island Neighborhood - A popular area on Lago
 - FourSquare API - Use FourSquare API to retrieve location details (street,city address) using longitue and latitude
 
 
-##Running the application
+## Running the application
 
 Open `index.html` in any browser
 
 ## Reference
+
+Bootstrap Nav bar:
+https://www.w3schools.com/bootstrap/bootstrap_navbar.asp -->
 
 Google Maps API:
 https://developers.google.com/maps/documentation/javascript/tutorial 
@@ -33,3 +36,4 @@ https://stackoverflow.com/questions/32343306/live-table-search-in-knockout-calli
 StreetView & Panaroma: 
 https://developers.google.com/maps/documentation/javascript/examples/streetview-service
 https://community.esri.com/thread/172167 
+
