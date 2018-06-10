@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,59 +18,57 @@
     <script src="js/lib/knockout.min.js"></script>
     <script src="js/data.js"></script>
 
-  </head>
-  
-  <body>
+</head>
+
+<body>
     <!--Nav Bar using Bootstrap
       https://www.w3schools.com/bootstrap/bootstrap_navbar.asp -->
-    
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" >Victoria Island Neighbourhood Map</a>
-            
-          </div>
-          
-          <form class="navbar-form navbar-right" role="search"> <!--Use bootstrap inline form to add a search field to the navigation bar-->
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <div class="navbar-header">
+                <a class="navbar-brand">Victoria Island Neighbourhood Map</a>
+
+            </div>
+
+            <form class="navbar-form navbar-right" role="search">
+                <!--Use bootstrap inline form to add a search field to the navigation bar-->
+                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Hide/Show
               </a>
-            <div class="input-group">
-              
-              <!--Uses KO databindings to bind search field values to ko variables defined in the JS file-->
-              <input type="text" class="form-control" placeholder="Search" name="search" data-bind="textInput: searchMap, valueUpdate: 'afterkeydown'"> <!-- Valueupdate causes the fields to update automatically 'afterkeydown forces it to happen after key is pressed-->
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
+                <div class="input-group">
+
+                    <!--Uses KO databindings to bind search field values to ko variables defined in the JS file-->
+                    <input type="text" class="form-control" placeholder="Search" name="search" data-bind="textInput: searchMap, valueUpdate: 'afterkeydown'">
+                    <!-- Valueupdate causes the fields to update automatically 'afterkeydown forces it to happen after key is pressed-->
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
                   <i class="glyphicon glyphicon-search"></i>
                 </button>
-              </div>
-            </div>
-          </form>
+                    </div>
+                </div>
+            </form>
         </div>
-      </nav>
-      
-<!--Place map in a "container-fluid" div to ensure it's responsive and displays correctly across all devices-->
-<div class="container-fluid">
-  <div class="row">
-<div id = "map"></div>
-<div class="col-md-3 col-md-offset-9 collapsed in " >
-    <div class="markernav"> <!-- Place each map marker in a div and set position to absolute in css to make it clickable-->
-      
-<div class="list-group" data-bind="foreach: locationList" id="collapseExample">
-   
-    <a href="#" class="list-group-item list-group-item-action" data-bind="text: title, click: show" ></a>
-</div>
+    </nav>
 
-</div>
-</div>
-</div>
-<!--Google Map API-->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkwg8mu3pK9-PuRTPnX1C3Eyz4qyZ7iTQ&callback=initMap" onerror ="">
-</script>
+    <!--Place map in a "container-fluid" div to ensure it's responsive and displays correctly across all devices-->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="map"></div>
+            <div class="col-md-3 col-md-offset-9 collapsed in ">
+                <div class="markernav">
+                    <!-- Place each map marker in a div and set position to absolute in css to make it clickable-->
 
+                    <div class="list-group collaspe in" data-bind="foreach: locationList" id="collapseExample">
 
+                        <a href="#" class="list-group-item list-group-item-action" data-bind="text: title, click: show"></a>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+        <!--Google Map API-->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkwg8mu3pK9-PuRTPnX1C3Eyz4qyZ7iTQ&callback=initMap">
+        </script>
 
-
-
-  </body>
+</body>
