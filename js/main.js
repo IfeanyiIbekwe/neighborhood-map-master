@@ -132,8 +132,8 @@ var ViewModel = function() {
         var searchFilter = self.searchMap().toLowerCase(); //-- Ensure text in the search field is converted to lower case
         if (searchFilter) {
             return ko.utils.arrayFilter(self.mapListItems(), function(location) {
-                var result= location.title.toLowerCase().indexOf(searchFilter) !== -1;
-                location.visible(result);
+                var result= location.title.toLowerCase().indexOf(searchFilter) !== -1; //perform search function against search field
+                location.visible(result); //make only strings/markers found in search function visible
                 return result;
 
             });
