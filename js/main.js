@@ -19,7 +19,7 @@ function initMap() {
 
 
 
-        }),
+        });
 
 
 
@@ -33,7 +33,7 @@ function initMap() {
 
 // Handle map error
 function googleMapsError() {
-    alert('An error occurred with Google Maps!Please refresh your browser and try again.');
+    alert('An error occurred with Google Maps! Please refresh your browser and try again.');
 }
 
 /* Location Model 
