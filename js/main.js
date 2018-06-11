@@ -1,7 +1,6 @@
 // Global variables
 var map;
 var infoWindow;
-var bounds;
 
 
 
@@ -20,18 +19,23 @@ function initMap() {
 
 
 
-        }),
+        });
 
 
 
 
         infoWindow = new google.maps.InfoWindow();
-    bounds = new google.maps.LatLngBounds();
 
 
     ko.applyBindings(new ViewModel());
 
 }
+
+// Handle map error
+function googleMapsError() {
+    alert('An error occurred with Google Maps! Please refresh your browser and try again.');
+}
+
 /* Location Model 
 Holds all the data for creating locations including markers, foursquare API URL, & data
 */
@@ -41,11 +45,11 @@ var LocationMarker = function(data) {
 
     this.title = data.title;
     this.position = data.location;
-    this.street = '',
-        this.city = '',
+    this.street = '';
+    this.city = '';
 
 
-        this.visible = ko.observable(true); //set markers to visible by default using a ko observable variable set to true (when this is false, markers are hidden)
+   this.visible = ko.observable(true); //set markers to visible by default using a ko observable variable set to true (when this is false, markers are hidden)
 
 
     //Foursquare Client Id & Secret
@@ -76,11 +80,9 @@ var LocationMarker = function(data) {
     self.filterMarkers = ko.computed(function() {
 
 
-        // set marker and extend bounds (showListings)
         if (self.visible() === true) {
 
             self.marker.setMap(map);
-            bounds.extend(self.marker.position);
         } else {
             self.marker.setMap(null);
         }
@@ -107,7 +109,7 @@ var LocationMarker = function(data) {
 
 
 
-}
+};
 
 
 /* View Model */
@@ -130,7 +132,9 @@ var ViewModel = function() {
         var searchFilter = self.searchMap().toLowerCase(); //-- Ensure text in the search field is converted to lower case
         if (searchFilter) {
             return ko.utils.arrayFilter(self.mapListItems(), function(location) {
-                return location.title.toLowerCase().indexOf(searchFilter) !== -1;
+                var result= location.title.toLowerCase().indexOf(searchFilter) !== -1; //perform search function against search field
+                location.visible(result); //make only strings/markers found in search function visible
+                return result;
 
             });
         }
